@@ -9,10 +9,11 @@ axios.defaults.params = {
   language: 'en-US',
 };
 
+//Список самых популярных фильмов на сегодня
 async function getPopularMovies(page) {
   try {
     const config = {
-      url: `trending/all/day`,
+      url: `trending/movie/day`,
       params: { page },
     };
     const { data } = await axios(config, page);
@@ -23,4 +24,23 @@ async function getPopularMovies(page) {
   }
 }
 
-export default getPopularMovies;
+//Запрос полной информации о фильме
+async function getMovieDetails(id) {
+  try {
+    const config = {
+      url: `movie/${id}`,
+    };
+    const { data } = await axios(config, id);
+    return data;
+  } catch (error) {
+    console.log('error', { error });
+    return null;
+  }
+}
+
+const apiServices = {
+  getPopularMovies,
+  getMovieDetails,
+};
+
+export default apiServices;
