@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import apiServices from 'components/API/API';
 
@@ -17,10 +17,11 @@ export default function Home() {
       <ul>
         {movies.map(movie => (
           <li key={movie.id}>
-            <Link to={{ pathname: `/movie/${movie.id}` }}>{movie.title}</Link>
+            <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
           </li>
         ))}
       </ul>
+      <Outlet />
     </>
   );
 }
