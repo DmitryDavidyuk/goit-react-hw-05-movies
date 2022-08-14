@@ -4,8 +4,9 @@ import { useSearchParams } from 'react-router-dom';
 
 export default function Movie() {
   let [searchParams, setSearchParams] = useSearchParams();
+
   return (
-    <MovieDetails /> && (
+    (
       <form>
         <input
           value={searchParams.get('query') || ''}
@@ -21,6 +22,6 @@ export default function Movie() {
         />
         <button type="buuton">search</button>
       </form>
-    )
+    ) && <MovieDetails />
   );
 }
