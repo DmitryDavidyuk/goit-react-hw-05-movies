@@ -38,9 +38,24 @@ async function getMovieDetails(id) {
   }
 }
 
+async function getSearchMovie(query) {
+  try {
+    const config = {
+      url: `search/movie`,
+      params: query,
+    };
+    const { data } = await axios(config, query);
+    return data;
+  } catch (error) {
+    console.log('error', { error });
+    return null;
+  }
+}
+
 const apiServices = {
   getPopularMovies,
   getMovieDetails,
+  getSearchMovie,
 };
 
 export default apiServices;

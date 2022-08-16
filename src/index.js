@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { App } from 'components/App';
-import Movie from 'components/pages/Movie';
-import Home from 'components/pages/Home';
-import MovieDetails from 'page/MovieDetails';
+import { App } from 'App';
+import Movies from 'pages/Movies';
+import Home from 'pages/Home';
+// import MovieDetails from 'pages/MovieDetails';
+// import Cast from 'pages/Cast';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -13,9 +14,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="/" element={<Home />} />
-          <Route path="/movie" element={<Movie />}>
-            <Route path=":movieId" element={<MovieDetails />}></Route>
-            <Route index element={<input></input>} />
+          <Route path="movies" element={<Movies />}>
+            {/* <Route path=":movieId" element={<MovieDetails />}>
+              <Route path="cast" element={<Cast />} />
+            </Route> */}
           </Route>
           <Route
             path="*"

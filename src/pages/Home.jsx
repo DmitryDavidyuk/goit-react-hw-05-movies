@@ -1,6 +1,6 @@
 import { Link, Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import apiServices from 'components/API/API';
+import apiServices from 'API/API';
 
 export default function Home() {
   const [movies, setMovies] = useState([]);

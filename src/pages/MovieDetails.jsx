@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import apiServices from 'components/API/API';
+import { Link, useParams } from 'react-router-dom';
+import apiServices from 'API/API';
 
 export default function MovieDetails() {
   const [movie, setMovie] = useState({});
@@ -16,11 +16,15 @@ export default function MovieDetails() {
   return (
     <div>
       <button type="button">Go back</button>
-      <img
-        width="250"
-        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-        alt={movie.title}
-      />
+      {movie.poster_path && (
+        <>
+          <img
+            width="250"
+            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            alt={movie.title}
+          />
+        </>
+      )}
       <h1>{movie.title}</h1>
       <p>User score: {Math.trunc(movie.vote_average * 10)}%</p>
       <h3>Owerviev</h3>
@@ -35,6 +39,9 @@ export default function MovieDetails() {
           </ul>
         </>
       )}
+      <div>
+        <Link to="/cast">Cast</Link>
+      </div>
     </div>
   );
 }
