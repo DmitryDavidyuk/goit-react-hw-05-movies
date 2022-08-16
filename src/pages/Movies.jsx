@@ -1,34 +1,25 @@
-import { Outlet, useSearchParams, Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import apiServices from '../API/API';
-// import { Link } from 'react-router-dom';
+import SearchBar from 'components/SearchBar';
 
 export default function Movies() {
-  const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query') ?? '';
 
   useEffect(() => {
-    apiServices.getSearchMovie(searchParams).then(data => setMovies(data));
-  }, [searchParams]);
+    apiServices.getSearchMovie(query).then(({ results }) => setMovies(results));
+  }, [query]);
+
+  const updateQueryString = query => {
+    const nextQuery = query !== '' ? { query } : {};
+    setSearchParams(nextQuery);
+  };
 
   return (
     <>
-      <form>
-        <input
-          value={searchParams.get('query') || ''}
-          type="text"
-          onChange={e => {
-            e.preventDefault();
-            const query = e.target.value;
-            if (query) {
-              setSearchParams({ query });
-            } else {
-              setSearchParams({});
-            }
-          }}
-        />
-        <button type="buuton">search</button>
-      </form>
+      <SearchBar onChange={updateQueryString} />
       <ul>
         {movies.map(movie => (
           <li key={movie.id}>
@@ -36,7 +27,6 @@ export default function Movies() {
           </li>
         ))}
       </ul>
-      <Outlet />{' '}
     </>
   );
 }

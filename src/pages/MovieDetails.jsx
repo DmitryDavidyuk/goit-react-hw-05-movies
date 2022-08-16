@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 import apiServices from 'API/API';
 
 export default function MovieDetails() {
@@ -40,7 +40,8 @@ export default function MovieDetails() {
         </>
       )}
       <div>
-        <Link to="/cast">Cast</Link>
+        <Link to="cast">Cast</Link> <Link to="reviews">Revies</Link>
+        <Outlet />
       </div>
     </div>
   );

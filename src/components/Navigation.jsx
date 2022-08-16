@@ -11,7 +11,7 @@ export default function Navigation() {
       </NavLink>
       <NavLink
         style={({ isActive }) => ({ color: isActive ? 'red' : '' })}
-        to="/movie"
+        to="/movies"
       >
         Movie
       </NavLink>

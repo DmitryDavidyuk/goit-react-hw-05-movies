@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function SearchBar() {
+export default function SearchBar({ onChange }) {
   const [query, setQuery] = useState('');
 
   const handleChangeQuery = e => {
@@ -9,12 +9,11 @@ export default function SearchBar() {
 
   const handleSubmit = e => {
     e.preventDefault();
-
     if (query.trim() === '') {
-      alert('Please enter your query!');
+      alert('Please enter your query');
       return;
     }
-
+    onChange(query);
     setQuery('');
   };
 
