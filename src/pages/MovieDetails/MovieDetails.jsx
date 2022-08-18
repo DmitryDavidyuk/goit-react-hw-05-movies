@@ -15,7 +15,9 @@ export default function MovieDetails() {
 
   return (
     <div>
-      <button type="button">Go back</button>
+      <button className={CSS.button} type="button">
+        Go back
+      </button>
       {movie.poster_path && (
         <>
           <img

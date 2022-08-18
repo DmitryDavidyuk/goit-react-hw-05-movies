@@ -9,8 +9,12 @@ export default function Movies() {
   const query = searchParams.get('query') ?? '';
 
   useEffect(() => {
-    apiServices.getSearchMovie(query).then(({ results }) => setMovies(results));
-  }, [query]);
+    if (!query) return;
+    apiServices
+      .getSearchMovie(searchParams)
+      .then(({ results }) => setMovies(results))
+      .catch(error => console.log(error));
+  }, [query, searchParams]);
 
   const updateQueryString = query => {
     const nextQuery = query !== '' ? { query } : {};
@@ -23,7 +27,7 @@ export default function Movies() {
       <ul>
         {movies.map(movie => (
           <li key={movie.id}>
-            <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
+            <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
           </li>
         ))}
       </ul>

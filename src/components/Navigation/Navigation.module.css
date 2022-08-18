@@ -1,0 +1,12 @@
+.nav {
+  border: 1px solid black;
+  padding: 20px;
+}
+
+.nav_link {
+  margin-left: 15px;
+}
+
+a {
+  text-decoration: none;
+}

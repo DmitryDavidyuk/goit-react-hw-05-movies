@@ -38,10 +38,11 @@ async function getMovieDetails(id) {
   }
 }
 
+//Поиск фильмов по запросу
 async function getSearchMovie(query) {
   try {
     const config = {
-      url: `search/movie`,
+      url: `search/movie?api_key=${KEY}`,
       params: query,
     };
     const { data } = await axios(config, query);
@@ -52,10 +53,38 @@ async function getSearchMovie(query) {
   }
 }
 
+async function getCastInfo(id) {
+  try {
+    const config = {
+      url: `movie/${id}/credits`,
+    };
+    const { data } = await axios(config, id);
+    return data.cast;
+  } catch (error) {
+    console.log('error', { error });
+    return null;
+  }
+}
+
+async function getMovieReview(id) {
+  try {
+    const config = {
+      url: `movie/${id}/reviews`,
+    };
+    const { data } = await axios(config, id);
+    return data.results;
+  } catch (error) {
+    console.log('error', { error });
+    return null;
+  }
+}
+
 const apiServices = {
   getPopularMovies,
   getMovieDetails,
   getSearchMovie,
+  getCastInfo,
+  getMovieReview,
 };
 
 export default apiServices;
