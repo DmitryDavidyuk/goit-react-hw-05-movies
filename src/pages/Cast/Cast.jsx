@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import apiServices from 'API/API';
-import imgNotFound from '../img/profile_picture_user_icon_153847.png';
-
+import imgNotFound from '../../img/profile_picture_user_icon_153847.png';
+import CSS from './Cast.module.css';
 export default function Cast() {
   const { movieId } = useParams();
   const [actors, setActors] = useState(null);
@@ -30,10 +30,11 @@ export default function Cast() {
       {status === 'pending' && <h2>Loading...</h2>}
       {status === 'rejected' && <h2>not found</h2>}
       {status === 'resolved' && (
-        <ul>
+        <ul className={CSS.cast}>
           {actors.map(actor => (
-            <li key={actor.id}>
+            <li className={CSS.card} key={actor.id}>
               <img
+                width="150"
                 src={
                   actor.profile_path
                     ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`

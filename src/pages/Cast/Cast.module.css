@@ -1,0 +1,9 @@
+.cast {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  list-style: none;
+  width: 250px;
+}

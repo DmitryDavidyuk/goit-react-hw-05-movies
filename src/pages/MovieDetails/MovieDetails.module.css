@@ -1,3 +1,28 @@
 .button {
   display: inline-block;
 }
+.goBack {
+  display: block;
+  padding: 5px;
+  border: 1px solid black;
+  width: 60px;
+  background: rgb(234, 233, 233);
+  margin: 5px 0;
+}
+
+.moviesDetailsContainer {
+  display: flex;
+}
+
+.poster {
+  margin-right: 15px;
+}
+
+.about {
+  width: 40%;
+}
+
+.about_links {
+  padding: 15px;
+  border: 1px solid black;
+}
