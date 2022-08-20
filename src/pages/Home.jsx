@@ -1,8 +1,8 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import apiServices from 'API/API';
 
-export default function Home() {
+const Home = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -21,7 +21,8 @@ export default function Home() {
           </li>
         ))}
       </ul>
-      <Outlet />
     </>
   );
-}
+};
+
+export default Home;

@@ -1,3 +1,23 @@
-.button {
-  display: inline-block;
+.goBack {
+  display: block;
+  padding: 5px;
+  border: 1px solid black;
+  width: 60px;
+  background: rgb(234, 233, 233);
+  margin: 5px 0;
+}
+
+.moviesDetailsContainer {
+  display: flex;
+}
+
+.poster {
+  margin-right: 15px;
+}
+
+.about {
+  width: 40%;
+}
+npm start .about h1 {
+  margin: 0;
 }
